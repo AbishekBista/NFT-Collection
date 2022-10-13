@@ -288,6 +288,7 @@ export default function Home() {
       renderButton: Returns a button based on the state of the dapp
     */
   const renderButton = () => {
+    try{
     // If wallet is not connected, return a button which allows them to connect their wllet
     if (!walletConnected) {
       return (
@@ -343,6 +344,9 @@ export default function Home() {
         </button>
       );
     }
+}catch(err){
+  console.log(err);
+}
   };
 
   return (
