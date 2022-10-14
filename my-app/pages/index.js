@@ -288,65 +288,104 @@ export default function Home() {
       renderButton: Returns a button based on the state of the dapp
     */
   const renderButton = () => {
-    try{
-    // If wallet is not connected, return a button which allows them to connect their wllet
-    if (!walletConnected) {
-      return (
-        <button onClick={connectWallet} className={styles.button}>
-          Connect your wallet
-        </button>
-      );
-    }
-
-    // If we are currently waiting for something, return a loading button
-    if (loading) {
-      return <button className={styles.button}>Loading...</button>;
-    }
-
-    // If connected user is the owner, and presale hasnt started yet, allow them to start the presale
-    if (isOwner && !presaleStarted) {
-      return (
-        <button className={styles.button} onClick={startPresale}>
-          Start Presale!
-        </button>
-      );
-    }
-
-    // If connected user is not the owner but presale hasn't started yet, tell them that
-    if (!presaleStarted) {
-      return (
-        <div>
-          <div className={styles.description}>Presale hasnt started!</div>
-        </div>
-      );
-    }
-
-    // If presale started, but hasn't ended yet, allow for minting during the presale period
-    if (presaleStarted && !presaleEnded) {
-      return (
-        <div>
-          <div className={styles.description}>
-            Presale has started!!! If your address is whitelisted, Mint a Crypto
-            Dev 🥳
-          </div>
-          <button className={styles.button} onClick={presaleMint}>
-            Presale Mint 🚀
+    try {
+      // If wallet is not connected, return a button which allows them to connect their wllet
+      if (!walletConnected) {
+        return (
+          <button onClick={connectWallet} className={styles.button}>
+            Connect your wallet
           </button>
-        </div>
-      );
-    }
+        );
+        // If wallet is not connected, return a button which allows them to connect their wllet
+      }
 
-    // If presale started and has ended, its time for public minting
-    if (presaleStarted && presaleEnded) {
-      return (
-        <button className={styles.button} onClick={publicMint}>
-          Public Mint 🚀
-        </button>
-      );
+      // If we are currently waiting for something, return a loading button
+      if (loading) {
+        return <button className={styles.button}>Loading...</button>;
+      }
+
+      // If connected user is the owner, and presale hasnt started yet, allow them to start the presale
+      if (isOwner && !presaleStarted) {
+        return (
+          <button className={styles.button} onClick={startPresale}>
+            Start Presale!
+          </button>
+        );
+      }
+
+      // If connected user is not the owner but presale hasn't started yet, tell them that
+      if (!presaleStarted) {
+        return (
+          <div>
+            <div className={styles.description}>Presale hasnt started!</div>
+          </div>
+        );
+      }
+
+      // If presale started, but hasn't ended yet, allow for minting during the presale period
+      if (presaleStarted && !presaleEnded) {
+        return (
+          <div>
+            <div className={styles.description}>
+              Presale has started!!! If your address is whitelisted, Mint a
+              Crypto Dev 🥳
+            </div>
+            <button className={styles.button} onClick={presaleMint}>
+              Presale Mint 🚀
+            </button>
+          </div>
+        );
+      }
+
+      // If we are currently waiting for something, return a loading button
+      if (loading) {
+        return <button className={styles.button}>Loading...</button>;
+      }
+
+      // If connected user is the owner, and presale hasnt started yet, allow them to start the presale
+      if (isOwner && !presaleStarted) {
+        return (
+          <button className={styles.button} onClick={startPresale}>
+            Start Presale!
+          </button>
+        );
+      }
+
+      // If connected user is not the owner but presale hasn't started yet, tell them that
+      if (!presaleStarted) {
+        return (
+          <div>
+            <div className={styles.description}>Presale hasnt started!</div>
+          </div>
+        );
+      }
+
+      // If presale started, but hasn't ended yet, allow for minting during the presale period
+      if (presaleStarted && !presaleEnded) {
+        return (
+          <div>
+            <div className={styles.description}>
+              Presale has started!!! If your address is whitelisted, Mint a
+              Crypto Dev 🥳
+            </div>
+            <button className={styles.button} onClick={presaleMint}>
+              Presale Mint 🚀
+            </button>
+          </div>
+        );
+      }
+
+      // If presale started and has ended, its time for public minting
+      if (presaleStarted && presaleEnded) {
+        return (
+          <button className={styles.button} onClick={publicMint}>
+            Public Mint 🚀
+          </button>
+        );
+      }
+    } catch (err) {
+      console.log(err);
     }
-}catch(err){
-  console.log(err);
-}
   };
 
   return (
